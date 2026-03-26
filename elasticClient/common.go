@@ -2,7 +2,7 @@ package elasticClient
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 
 	"github.com/elastic/go-elasticsearch/v7"
 	"github.com/elastic/go-elasticsearch/v7/esapi"
@@ -35,7 +35,7 @@ func getBytesFromResponse(res *esapi.Response) ([]byte, error) {
 	}
 	defer closeBody(res)
 
-	bodyBytes, err := ioutil.ReadAll(res.Body)
+	bodyBytes, err := io.ReadAll(res.Body)
 	if err != nil {
 		return nil, err
 	}

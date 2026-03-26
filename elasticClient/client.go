@@ -5,7 +5,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strings"
 	"time"
@@ -62,7 +62,7 @@ func (ec *esClient) DoBulkRequest(buff *bytes.Buffer, index string) error {
 
 	defer closeBody(res)
 
-	bodyBytes, errRead := ioutil.ReadAll(res.Body)
+	bodyBytes, errRead := io.ReadAll(res.Body)
 	if errRead != nil {
 		return errRead
 	}
@@ -154,7 +154,7 @@ func (ec *esClient) DoMultiGet(ids []string, index string) ([]byte, error) {
 
 	defer closeBody(res)
 
-	bodyBytes, errRead := ioutil.ReadAll(res.Body)
+	bodyBytes, errRead := io.ReadAll(res.Body)
 	if errRead != nil {
 		return nil, errRead
 	}

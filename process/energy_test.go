@@ -2,7 +2,7 @@ package process
 
 import (
 	"encoding/json"
-	"io/ioutil"
+	"io"
 	"os"
 	"testing"
 
@@ -99,7 +99,7 @@ func TestExtractAddressesAndEnergy(t *testing.T) {
 
 func readJson(path string) string {
 	jsonFile, _ := os.Open(path)
-	byteValue, _ := ioutil.ReadAll(jsonFile)
+	byteValue, _ := io.ReadAll(jsonFile)
 
 	return string(byteValue)
 }

@@ -3,7 +3,7 @@ package reindexer
 import (
 	"bytes"
 	"fmt"
-	"io/ioutil"
+	"os"
 	"path"
 )
 
@@ -35,7 +35,7 @@ func readTemplateForIndex(pathToIndicesConfig string, index string) (*bytes.Buff
 }
 
 func readFile(path string) (*bytes.Buffer, error) {
-	fileBytes, err := ioutil.ReadFile(path)
+	fileBytes, err := os.ReadFile(path)
 	if err != nil {
 		return nil, fmt.Errorf("readFile: %w, path %s, error %s", err, path, err.Error())
 	}

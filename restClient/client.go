@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"math"
 	"net/http"
 	"time"
@@ -135,7 +135,7 @@ func (rc *restClient) CallPostRestEndPoint(
 	}
 
 	// status response not ok, return the error
-	responseBytes, err := ioutil.ReadAll(resp.Body)
+	responseBytes, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return err
 	}
