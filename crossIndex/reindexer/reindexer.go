@@ -146,7 +146,7 @@ func indexEnergyBlockInfo(energyBlockInfo *data.BlockInfo, epoch uint32, esClien
 }
 
 func (r *reindexer) checkAndCreateValuesIndex() error {
-	template, err := readTemplateForIndex(r.pathToIndicesConfig, valuesIndex) //nolint:ineffassign,SA4006
+	template, err := readTemplateForIndex(r.pathToIndicesConfig, valuesIndex) //nolint:ineffassign,staticcheck
 	templateBytes := template.Bytes()
 
 	for _, dstClient := range r.destinationClients {
