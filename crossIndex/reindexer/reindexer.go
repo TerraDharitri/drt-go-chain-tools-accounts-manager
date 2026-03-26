@@ -146,7 +146,7 @@ func indexEnergyBlockInfo(energyBlockInfo *data.BlockInfo, epoch uint32, esClien
 }
 
 func (r *reindexer) checkAndCreateValuesIndex() error {
-	template, err := readTemplateForIndex(r.pathToIndicesConfig, valuesIndex)
+	template, err := readTemplateForIndex(r.pathToIndicesConfig, valuesIndex) //nolint:ineffassign
 	templateBytes := template.Bytes()
 
 	for _, dstClient := range r.destinationClients {
@@ -176,7 +176,7 @@ func getAllAccounts(responseBytes []byte) (map[string]*data.AccountInfoWithStake
 
 	accts := make(map[string]*data.AccountInfoWithStakeValues)
 	for _, acct := range accountsResponse.Hits.Hits {
-		acc := data.AccountInfoWithStakeValues{}
+		acc := data.AccountInfoWithStakeValues{} //nolint:ineffassign
 		acc = acct.Account
 		accts[acct.ID] = &acc
 	}
